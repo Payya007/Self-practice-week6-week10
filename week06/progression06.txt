@@ -1,0 +1,59 @@
+
+const quotes = [
+    { id: 1, content: "To be or not to be", author: "Shakespeare" },
+    { id: 2, content: "I think, therefore I am", author: "Descartes" },
+    { id: 3, content: "The only thing we have to fear is fear itself", author: "F. D. Roosevelt" }
+]
+
+
+function addQuote(quote) { // add โดยการ push เข้าไป
+    quotes.push(quote)
+    return quotes
+}
+
+function deleteQuote(id) {
+  const newQuotes = quotes.filter(p => p.id !== id) // กรอกอันที่ไม่ใช่ออกมา 
+        quotes.length =0        // เคลียร์ของเก่า
+  quotes.push(...newQuotes)       // ใส่ array ใหม่กลับเข้าไป
+  return quotes
+}
+
+
+function updateQuote(id, updatedQuote) {
+    let re = quotes.find(p => p.id === id) // หาตัวที่เราอยากได้ออกมา
+ 
+    if (re){
+        if (updatedQuote.content) re.content = updatedQuote.content // อัพเดทแค่ content
+        if (updatedQuote.author) re.author = updatedQuote.author // อัพเดทแค่ author 
+      
+      return re
+    }
+}
+
+function getAllQuotes() {
+return quotes // แสดงผลทุกตัวออกมา  
+}
+
+// 6. Test your functions below
+// TODO: Add 3 quotes using addQuote()
+
+// TODO: Delete 1 quote using deleteQuote()
+
+// TODO: Update 1 quote using updateQuote()
+
+// TODO: Print all quotes using getAllQuotes()
+ 
+console.log(deleteQuote(2,quotes)) // คืน 1 กับ 3 ออกมา
+console.log("--------------------")
+
+console.log(updateQuote(3,{ content: "none", author: "Franklin D. shhhhhhh" })) // Output: { id: 3, content: "none", author: "Franklin D. shhhhhhh" }
+console.log("--------------------")
+console.log(addQuote({ id: 4, content: "Life is what happens when you're busy making other plans", author: "John Lennon" })) // เพิ่ม 4 เข้าไป 
+console.log("--------------------")
+console.log(getAllQuotes()) // ทุกตัวแสดงผล
+
+
+อธิบายโดยผมเองครับ ก็ ใช้ copilot ในการ test เช่น บรรทัด 49 , 51 
+ก็เข้าใจการใช้ find , filter มากขึ้น ลำดับ logic ได้ดีกว่าแต่ก่อน ที่เมื่อก่อน งงๆ ว่าลำดับ logic ไง แล้วก็ พึ่งใเข้าใจจริงๆ ถ้าใช้ filter ต้อง push เข้าไป เพราะไม่มีผลกับarrayต้นฉบับ
+
+//ภคิน ตั้งเสถียรกิจ 67130500027
