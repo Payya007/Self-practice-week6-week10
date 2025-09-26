@@ -1,0 +1,47 @@
+const root = document.documentElement;
+console.log(root);  // <html>...</html>
+
+
+const divElement = document.firstChild
+console.log(typeof(divElement)) // เช็ค type
+
+if(document.firstChild.nodeType){
+    console.log("Hello , HTML node")
+}
+else{
+    console.log("Hello ,any node")
+
+}
+ 
+const pDiv = document.documentElement.children[1].children[0];  // 1 คือ body   และ  0 คือ ตัวแรก เจอ div เลย 
+console.log(pDiv);  // เจอ div ดิ
+const pText = document.documentElement.children[1].children[0].children[0]; // 0 คือ ตัวแรก เจอ p เลย
+console.log(pText);  // เจอ p 
+
+ const pElement = document.createElement("p"); 
+pElement.setAttribute("format", "italic"); // set format  italic
+document.getElementById("demo").appendChild(pElement); // ต่อ id demo
+
+const base = document.createElement("i"); // สร้าง i 
+
+const inHtml = base.cloneNode(); //  สร้าง <i></i> ใหม่จาก base
+inHtml.innerHTML = "Sample Italic text "; // ใส่ข้อความ
+pElement.appendChild(inHtml); // ต่อไป 
+
+const inText = base.cloneNode();  //  สร้าง <i></i> ใหม่จาก base
+inText.innerText = "Sample Italic text "; // ใส่ข้อความ
+pElement.appendChild(inText); // ต่อไป
+
+const textCon = base.cloneNode(); //  สร้าง <i></i> ใหม่จาก base
+textCon.textContent = "Sample Italic text "; // ใส่ข้อความ
+pElement.appendChild(textCon); // ต่อไป
+
+
+
+
+Child คือ อยู่ข้างใน root  เช่น head และ body เป็นลูกของ html
+Parent  คือ ตัวที่ครอบลูก เช่น html เป็น parent ของ body
+Sibling  คือ nodes ที่มี parent เดียวกันเช่น head กับ body เป็น sibling กัน เพราะทั้งคู่เป็นลูกของ html   
+
+สรุปโดย ผมเองครับ ภคิน ตั้งเสถียรกิจ 67130500027 
+ใช้ chat แสดงผลลัพธ์ ใน คอมเม้น < > เรื่องเล็กๆน้อย เช่น  .children[1] ก็ถาม chatgpt  ก็เข้าใจมากขึ้น 
