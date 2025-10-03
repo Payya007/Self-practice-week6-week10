@@ -11,7 +11,7 @@ const quoteList = document.getElementById("quoteslist")
 // - For each quote, create a <p> element with content and author
 // - Append each <p> to quoteList
 function renderQuotes() {
-    
+    // test// 
 }
 
 // Step 4: Add test quotes manually and call renderQuotes()
