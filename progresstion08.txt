@@ -1,0 +1,41 @@
+const box = document.getElementById('box'); // getElementById ที่เป็น box มา
+const button = document.getElementsByTagName('button'); // เอา button ดึงออกมา
+console.log(button) // {0:button}, {1 :button } , {2:button}
+console.log(Array.from(button)) //[{0:button}, {1 :button } , {2:button}]  
+console.log(box)
+Array.from(button).forEach((button) => { // เอามาลูป
+    button.addEventListener(('click'),() =>{
+        box.style.backgroundColor = button.getAttribute("data-color") // ถ้ากด click ก็ให้เปลี่ยนสีไปตาม ค่าใน  data-color
+        box.textContent = button.getAttribute("data-color").toUpperCase(); เอาค่านั้นแหละ มาทำ UpperCase
+    })
+})
+
+
+2. 
+
+let quotes = [] // สร้าง [] ปล่าว
+
+const quoteList = document.getElementById("quote-list") //  เอาตัว quoteList มา
+
+
+function renderQuotes() {
+       quoteList.innerHTML = ""  // เคลียร์ obj
+       quotes.forEach(q => {
+                 const p = document.createElement("p") // สร้าง p
+                p.textContent = `"${q.content}" - ${q.author}`// รับค่า content , author มา
+                quoteList.appendChild(p) // มา append มาแสดงผล
+       })
+}
+
+// Step 4: Add test quotes manually and call renderQuotes()
+// Example:
+// addQuote('Stay hungry, stay foolish.', 'Steve Jobs')
+// renderQuotes();
+function addQuote(content, author){
+         const quote = {content, author} // อัพเดทค่า content , author
+            quotes.push(quote) // push เข้าไป
+            return quote
+}
+addQuote('Stay hungry, stay foolish.', 'Steve Jobs')
+addQuote('Stay sasas, stay asas.', 'Steve asassas') //เพิ่ม ค่าเช้าไป
+renderQuotes(); // แสดงผลทุกตัว 
