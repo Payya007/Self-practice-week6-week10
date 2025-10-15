@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Preference Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>ตั้งค่าหน้าจอของคุณ</h2>
+
+  <form id="settingForm">
+    <div class="form-group">
+      <label for="bgColor">Background Color:</label>
+      <input type="color" id="bgColor" name="bgColor">
+    </div>
+
+    <div class="form-group">
+      <label for="fontColor">Font Color:</label>
+      <input type="color" id="fontColor" name="fontColor">
+    </div>
+
+    <div class="form-group">
+      <label for="fontSize">Font Size:</label>
+      <select id="fontSize" name="fontSize">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="saveBtn">Save</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
+  </form>
+
+  <script src="main.js"></script>
+</body>
+</html>
