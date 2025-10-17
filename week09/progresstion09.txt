@@ -1,0 +1,15 @@
+username = document.getElementById("username"); // ไปดึง  div class , id username มา
+email = document.getElementById("email");
+password = document.getElementById("password");
+con_password = document.getElementById("confirm-password");
+submit = document.getElementById("submit");
+submit.addEventListener("click",(e) => { ถ้ากด submit
+     e.preventDefault(); // ป้องกันการกระโดดไปอีกหน้า 
+    username.value.trim().length == 0 ? alert("username is empty "): true; // ต้อง username.value ไม่งั้นถ้า username อย่างเดียว ค่าจะไม่ออกมา 
+    email.value.trim().length == 0  && !email.includes("@") ? alert("email is empty "): true;
+    password.value.trim().length == 0 ?   alert("password is empty ") : true;
+    con_password.value.trim().length == 0 || con_password.value != password.value ? alert("confirm password is empty or not match"): true;
+
+    alert("All good!");
+}) 
+
