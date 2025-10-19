@@ -5,7 +5,7 @@ console.log(Array.from(button)) //[{0:button}, {1 :button } , {2:button}]
 console.log(box)
 Array.from(button).forEach((button) => { // เอามาลูป
     button.addEventListener(('click'),() =>{
-        box.style.backgroundColor = button.getAttribute("data-color") // ถ้ากด click ก็ให้เปลี่ยนสีไปตาม ค่าใน  data-color
+        box.style.backgroundColor = button.getAttribute("data-color") // ถ้ากด click ก็ให้เปลี่ยนสีไปตาม ค่าใน  data-color เช่น button ที่ 0 ก็เป็น red 
         box.textContent = button.getAttribute("data-color").toUpperCase(); เอาค่านั้นแหละ มาทำ UpperCase
     })
 })

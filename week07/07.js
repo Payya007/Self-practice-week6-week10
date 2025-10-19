@@ -34,4 +34,4 @@ pElement.appendChild(inText);
 
 const textCon = base.cloneNode();
 textCon.textContent = "Sample Italic text ";
-pElement.appendChild(textCon);อ    
+pElement.appendChild(textCon); 

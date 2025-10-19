@@ -14,51 +14,75 @@ const randomDisplay = document.getElementById("randomQuoteDisplay");
 // Create a quote element in the DOM
 function createQuoteElement(quote) {
   const div = document.createElement("div");
-  div.dataset.id = quote.id;
+  div.setAttribute("data-id", quote.id);
 
-  const p1 = document.createElement("p");
-  p1.textContent = quote.content;
+  const contentP = document.createElement("p");
+  contentP.textContent = quote.content;
+ const authorP = document.createElement("p");
+  authorP.textContent = quote.author;
+  
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.classList.add("edit-btn");
+  editBtn.setAttribute("data-id", quote.id);
+  editBtn.addEventListener("click", () => {
+    updateQuoteInDOM(quote);
+  }
+  );
 
-  const p2 = document.createElement("p");
-  p2.textContent = quote.author;
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.setAttribute("data-id", quote.id);
+  deleteBtn.addEventListener("click", () => {
+    deleteQuoteFromDOM(quote.id);
+  });
 
-  const edit_btn = document.createElement("button");
-  edit_btn.textContent = "Edit";
-  edit_btn.className = "edit-btn";
-  edit_btn.dataset.id = quote.id;
+  div.appendChild(contentP);
+  div.appendChild(authorP);
+  div.appendChild(editBtn);
+  div.appendChild(deleteBtn);
 
-  const delete_btn = document.createElement("button");
-  delete_btn.textContent = "Delete";
-  delete_btn.className = "delete-btn";
-  delete_btn.dataset.id = quote.id;
-
-  edit_btn.addEventListener("click", () => updateQuoteInDOM(quote));
-  delete_btn.addEventListener("click", () => deleteQuoteFromDOM(quote.id));
-
-  div.append(p1, p2, edit_btn, delete_btn);
+  quoteList.appendChild(div);
+  
   return div;
+  // a quote element example
+    //<section id="quote-list">
+    //  <div data-id="1">
+    //    <p>Confidence comes from discipline and training</p>
+    //    <p>Robert</p>
+    //    <button class="edit-btn" data-id="1">
+    //      Edit
+    //    </button>
+    //    <button class="delete-btn" data-id="1">
+    //      Delete
+    //    </button>
+    //  </div>
+    // </section>
 }
 
 // Fill form with quote data for editing
 function updateQuoteInDOM(quote) {
-  idInput.value = quote.id;
+ idInput.value = quote.id;
   contentInput.value = quote.content;
-  authorInput.value = quote.author;
+  authorInput.value = quote.author; 
+    renderQuotes();
 }
 
 // Delete quote from array and re-render
 function deleteQuoteFromDOM(id) {
-  quotes = quotes.filter((q) => q.id !== id);
-  renderQuotes();
+ quotes=quotes.filter((quote) => quote.id !==id)
+ renderQuotes();
 }
 
 // Render all quotes to the DOM
 function renderQuotes() {
-  quoteList.innerHTML = "";
-  quotes.forEach((q) => {
-    const el = createQuoteElement(q);
-    quoteList.appendChild(el);
-  });
+quoteList.innerHTML = "";
+quoteList = quotes.forEach((q)=>{
+  let  p = createQuoteElement(q);
+  quoteList.appendChild(p);
+})
+  
 }
 
 // Display a random quote
@@ -86,14 +110,14 @@ form.addEventListener("submit", (e) => {
     // Update existing quote
     quotes = quotes.map((q) =>
       q.id === id ? { id, content, author } : q
-    );
+    ); // ถ้ามันมีแล้วในระบบ ก็ไม่ต้องสร้างใหมา่
   } else {
     // Add new quote
     const newQuote = {
       id: Date.now().toString(),
       content,
       author,
-    };
+    }; // ถ้าไม่มีก็สร้างใหม่
     quotes.push(newQuote); 
   }
 

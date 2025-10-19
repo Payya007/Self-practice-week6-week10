@@ -1,0 +1,41 @@
+//16272936
+//027
+const Dombackground = document.getElementById("bgColor")
+const fontColor = document.getElementById("fontColor")
+const fontSize = document.getElementById("fontSize")
+const submit =document.getElementById("saveBtn")
+const reset = document.getElementById("resetBtn")
+submit.addEventListener("click", ()=>{
+      // เปลี่ยนสีพื้นหลังของหน้าเว็บ
+     document.body.style.backgroundColor=Dombackground.value
+          // เปลี่ยนสีตัวอักษรของหน้าเว็บ
+     document.body.style.color =fontColor.value
+         // เปลี่ยนขนาดฟอนต์ของหน้าเว็บ
+     document.body.style.fontSize = fontSize.value
+
+    localStorage.setItem("bgColor", Dombackground.value);
+    localStorage.setItem("fontColor", fontColor.value);
+    localStorage.setItem("fontSize", fontSize.value);
+})
+reset.addEventListener("click", ()=>{
+     localStorage.clear();
+     location.reload();
+})
+window.addEventListener("DOMContentLoaded", () => {
+    const saveBgcolor =  localStorage.getItem("bgColor") // save ไว้ใน local 
+    const savefontColor = localStorage.getItem("fontColor")
+    const savefontSize = localStorage.getItem("fontSize")
+
+    if(saveBgcolor){ // ถ้าเคยบันทึกแล้ว  ไม่ต้องทำ
+         document.body.style.backgroundColor = saveBgcolor // save ค่าลงไป
+        
+    }
+    if(savefontColor){// ถ้าเคยบันทึกแล้ว  ไม่ต้องทำ
+        document.body.style.color = savefontColor
+      
+    }
+    if(savefontSize){// ถ้าเคยบันทึกแล้ว  ไม่ต้องทำ
+        document.body.style.fontSize = savefontSize
+        
+    }
+})
